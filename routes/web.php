@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->get('/home', [TaskController::class, 'index'])->name('home');
 
 /*
+ * The dashboard route
+ */
+Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+/*
  * The resource routes
  */
 Route::middleware(['auth'])->group(function () {
@@ -33,7 +42,9 @@ Route::middleware(['auth'])->group(function () {
  */
 Route::view('/about', 'about')->name('about');
 
-URL::forceScheme('https');
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 require __DIR__.'/auth.php';
 
 
