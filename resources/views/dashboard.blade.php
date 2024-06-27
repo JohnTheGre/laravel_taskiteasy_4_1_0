@@ -11,6 +11,11 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                 </div>
+                <div class="p-6">
+                    <a href="{{ route('home') }}" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+                        {{ __('Go to Home Page') }}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
