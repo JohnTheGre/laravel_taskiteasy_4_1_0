@@ -13,17 +13,25 @@
             </div>
         </div>
         <div class="navbar-end">
-            <a href="{{ route('tasks.create') }}" class="button is-primary">Create a New Task</a>
+            @auth
+                <a href="{{ route('tasks.create') }}" class="button is-primary">Create a New Task</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="button is-light">Logout</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="button is-light">Login</a>
+                <a href="{{ route('register') }}" class="button is-primary">Register</a>
+            @endauth
         </div>
     </div>
-    <div class="block">
-        @foreach($tasks as $task)
-            <x-task.list-item :task="$task"></x-task.list-item>
-        @endforeach
-    </div>
+    @auth
+        <div class="block">
+            @foreach($tasks as $task)
+                <x-task.list-item :task="$task"></x-task.list-item>
+            @endforeach
+        </div>
+    @else
+        <p>Please <a href="{{ route('register') }}">register</a> or <a href="{{ route('login') }}">login</a> to manage your tasks.</p>
+    @endauth
 </x-layout.main>
-
-docker build -t my-laravel-webserver .
-docker run --name mysql-container --network laravel-network -e MYSQL_ROOT_PASSWORD=laravel_password -e MYSQL_DATABASE=example_app -e MYSQL_USER=laravel_user -e MYSQL_PASSWORD=laravel_password -d mysql:8.0
-docker run --name laravel-container --network laravel-network -p 8080:80 -v "$(pwd):/var/www/html" laravel-app
-docker run --name laravel-container --network laravel-network -p 8080:80 -v "$(pwd):/var/www/html" my-laravel-webserver
