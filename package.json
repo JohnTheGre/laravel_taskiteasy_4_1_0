@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "start": "serve -s build",
+        "start": "vite",
         "build": "vite build",
         "heroku-postbuild": "npm install && npm run build"
     },
