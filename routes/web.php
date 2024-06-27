@@ -6,6 +6,7 @@ use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 /*
  * The home routes
@@ -32,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
  */
 Route::view('/about', 'about')->name('about');
 
+URL::forceScheme('https');
 require __DIR__.'/auth.php';
 
 
