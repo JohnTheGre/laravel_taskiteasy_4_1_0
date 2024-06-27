@@ -8,6 +8,9 @@
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "@vitejs/plugin-vue": "^4.5.0",
+        "@creativebulma/bulma-tooltip": "^1.2.0",
+        "@fortawesome/fontawesome-free": "^6.4.2",
+        "bulma": "^0.9.4",
         "axios": "^1.6.4",
         "bootstrap": "^5.2.3",
         "husky": "^9.0.11",
