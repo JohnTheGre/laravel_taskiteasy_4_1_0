@@ -20,6 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
  */
 Route::middleware(['auth'])->get('/home', [TaskController::class, 'index'])->name('home');
 
+
 /*
  * The dashboard route
  */
@@ -38,11 +39,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
 
 /*
  * Route that shows the about page. This handler just returns the about view.
  */
 Route::view('/about', 'about')->name('about');
+
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 
 require __DIR__.'/auth.php';
