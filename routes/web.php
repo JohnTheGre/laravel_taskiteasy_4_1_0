@@ -17,8 +17,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*
  * The protected home route
+
  */
 Route::middleware(['auth'])->get('/home', [TaskController::class, 'index'])->name('home');
+
 
 /*
  * The dashboard route
@@ -26,6 +28,10 @@ Route::middleware(['auth'])->get('/home', [TaskController::class, 'index'])->nam
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::middleware(['auth'])->get('/home', [TaskController::class, 'index'])->name('home');
+
 
 /*
  * The resource routes
@@ -38,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
 
 /*
@@ -48,4 +55,5 @@ Route::view('/about', 'about')->name('about');
 if (App::environment('production')) {
     URL::forceScheme('https');
 }
+
 require __DIR__.'/auth.php';
