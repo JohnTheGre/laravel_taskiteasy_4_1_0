@@ -45,7 +45,4 @@ Route::middleware(['auth'])->group(function () {
  */
 Route::view('/about', 'about')->name('about');
 
-if (App::environment('production')) {
-    URL::forceScheme('https');
-}
 require __DIR__.'/auth.php';
