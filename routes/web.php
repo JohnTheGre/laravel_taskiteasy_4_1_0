@@ -17,6 +17,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*
  * The protected home route
+
  */
 Route::middleware(['auth'])->get('/home', [TaskController::class, 'index'])->name('home');
 
@@ -27,6 +28,10 @@ Route::middleware(['auth'])->get('/home', [TaskController::class, 'index'])->nam
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+ */
+Route::middleware(['auth'])->get('/home', [TaskController::class, 'index'])->name('home');
+
 
 /*
  * The resource routes
