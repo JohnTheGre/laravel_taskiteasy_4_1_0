@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<<<<<<< HEAD
+
         {{-- Compiled assets --}}
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         {{-- Render additional styles from subviews and/or components --}}
@@ -35,8 +35,8 @@
             </div>
         </div>
     </body>
-=======
+
 @stack('scripts')
 </body>
->>>>>>> 7cd52f39d841ea19c74e9faccb4ba4a6b205e1f1
+
 </html>

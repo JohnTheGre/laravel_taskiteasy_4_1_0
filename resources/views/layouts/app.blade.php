@@ -13,7 +13,7 @@
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
     @include('layouts.navigation')
 
-<<<<<<< HEAD
+
         {{-- Compiled assets --}}
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         {{-- Render additional styles from subviews and/or components --}}
@@ -22,7 +22,7 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
-=======
+
     <!-- Page Heading -->
     @if (isset($header))
         <header class="bg-white dark:bg-gray-800 shadow">
@@ -31,7 +31,7 @@
             </div>
         </header>
     @endif
->>>>>>> 7cd52f39d841ea19c74e9faccb4ba4a6b205e1f1
+
 
     <!-- Page Content -->
     <main>
