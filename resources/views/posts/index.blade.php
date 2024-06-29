@@ -10,9 +10,11 @@
                 </h2>
             </div>
         </div>
+        @if (Auth::user()->role === 'post_writer')
         <div class="navbar-end">
             <a href="{{ route('posts.create') }}" class="button is-primary">Create a New Blog Post</a>
         </div>
+        @endif
     </div>
     @foreach($posts as $post)
         <x-post.list-item :post="$post"></x-post.list-item>

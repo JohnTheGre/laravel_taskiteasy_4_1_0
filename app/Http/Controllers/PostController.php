@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\Post;
+use App\Models\Comment;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -50,8 +54,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $comments = $post->comments()->paginate(10);
         return view('posts.show', [
-            'post' => $post
+            'post' => $post,
+            'comments' => $comments,
         ]);
     }
 
@@ -107,5 +113,28 @@ class PostController extends Controller
         return redirect()->route('posts.index')
             ->with('success', 'Post successfully deleted');
     }
+
+    /**
+     * Store a comment for the specified Post.
+     */
+    public function storeComment(Request $request, Post $post)
+    {
+        // Check if the user is a Post Viewer
+        if (Auth::user()->role !== 'post_viewer') {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $request->validate([
+            'content' => 'required',
+        ]);
+
+        $post->comments()->create([
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+        ]);
+
+        return redirect()->route('posts.show', $post);
+    }
+
 
 }

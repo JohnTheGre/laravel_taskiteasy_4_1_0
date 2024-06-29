@@ -39,6 +39,7 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            'throttle:login' => 'throttle:login,5,1',
         ],
     ],
 

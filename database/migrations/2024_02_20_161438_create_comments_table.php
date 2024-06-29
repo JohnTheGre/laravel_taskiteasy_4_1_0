@@ -18,6 +18,7 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->text('content');
+            $table->unsignedBigInteger('best_reply_id')->nullable();
             $table->timestamps();
         });
     }
