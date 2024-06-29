@@ -28,3 +28,9 @@ outstanding article [How to Setup a Laravel Project You Cloned from Github.com](
 ## Licensing
 
 The code in this project is licensed under MIT license.
+
+## Where the features can be found 
+The feature can be found when you register initially you have to choose between being a Post Viewer and being a Post
+Writer, Post Viewer has the ability to only view posts and add comments to posts as the main my main functionalities 
+were made for the Posts, the Post Writers however can create a new post, Delete posts and Edit posts but cannot add 
+comments.
