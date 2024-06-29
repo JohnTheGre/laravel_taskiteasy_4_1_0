@@ -1,4 +1,5 @@
 <x-layout.main>
+    <a href="{{ route('dashboard') }}" class="button is-text is-small has-text-grey-light">Go to the Dashboard</a>
     <div class="navbar">
         <div class="navbar-start">
             <div class="block">
